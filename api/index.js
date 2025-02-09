@@ -7,18 +7,18 @@ import slash from 'express-slash'
 import { errorHandler, logErrors, boomErrorHandler } from './middleware/error.handler.js';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(corsConfig);
 app.use(helmet());
 app.use(morgan('tiny'));
 /* TODO INTEGRATE PASSPORT */
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
   res.send('Hola mi server en express');
 });
 
-app.get('/nueva-ruta', (req, res) => {
+app.get('/api/nueva-ruta', (req, res) => {
   res.send('Hola, soy una nueva ruta');
 });
 
